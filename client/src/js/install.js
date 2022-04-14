@@ -5,8 +5,8 @@ const installBtn = document.getElementById('buttonInstall');
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     window.deferredPrompt = e;
-    // installBtn.classList.toggle('hidden',false)
-    installBtn.setAttribute('visibility', 'visible');
+    installBtn.classList.remove('hidden')
+    // installBtn.setAttribute('visibility', 'visible');
 
 
 
@@ -20,9 +20,9 @@ installBtn.addEventListener('click', async () => {
     beforeInstall.prompt();
 
     window.deferredPrompt = null;
-    installBtn.setAttribute('visibility', 'hidden');
+    // installBtn.setAttribute('visibility', 'hidden');
     // installBtn.textContent = 'Installed!';
-    // installBtn.classList.toggle('hidden',true);
+    installBtn.classList.add('hidden');
 });
 });
 // TODO: Add an handler for the `appinstalled` event

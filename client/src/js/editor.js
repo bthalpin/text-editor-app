@@ -29,7 +29,7 @@ export default class {
         data = data.map(line=>line.editor).join('\n')
       }
       console.info('Loaded data from IndexedDB, injecting into editor');
-      this.editor.setValue(data[0].editor || localData || header);
+      this.editor.setValue(data|| localData || header);
 
     });
 
