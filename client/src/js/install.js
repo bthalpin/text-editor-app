@@ -8,15 +8,19 @@ window.addEventListener('beforeinstallprompt', (e) => {
     installBtn.classList.remove('hidden')
     // installBtn.setAttribute('visibility', 'visible');
 
-
+});
 
 // TODO: Implement a click event handler on the `butInstall` element
 installBtn.addEventListener('click', async () => {
     const beforeInstall = window.deferredPrompt;
     console.log('click',beforeInstall,window.deferredPrompt)
     if (!beforeInstall){
+    installBtn.classList.add('hidden');
+
         return
     }
+    installBtn.classList.remove('hidden')
+
     beforeInstall.prompt();
 
     window.deferredPrompt = null;
@@ -24,8 +28,10 @@ installBtn.addEventListener('click', async () => {
     // installBtn.textContent = 'Installed!';
     installBtn.classList.add('hidden');
 });
-});
+
 // TODO: Add an handler for the `appinstalled` event
 window.addEventListener('appinstalled', (event) => {
     window.deferredPrompt = null;
+    installBtn.classList.add('hidden');
+
 });
