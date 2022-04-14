@@ -38,5 +38,6 @@
   "start_url": "/",
   "description": "PWA text editor",
   "background_color": "#3d4157",
-  "theme_color": "#3d4157"
+  "theme_color": "#3d4157",
+  "id": "/"
 }

@@ -20,7 +20,7 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'Contact Cards'
+        title: 'Text Editor'
       }),
       new InjectManifest({
         swSrc: './src-sw.js',
@@ -36,6 +36,7 @@ module.exports = () => {
         theme_color: '#3d4157',
         start_url: '/',
         publicPath: '/',
+        id:'/',
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
