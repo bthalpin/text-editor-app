@@ -6,6 +6,10 @@ PWA Text Editor is an online text editor app that stores the information in the 
 
 ## Table of Contents
 
+[Link](#link)
+
+[Media](#media)
+
 [Installation](#installation)
 
 [Usage](#usage)
@@ -17,6 +21,13 @@ PWA Text Editor is an online text editor app that stores the information in the 
 [Tests](#tests)
 
 [Questions](#questions)
+
+## Link
+[PWA Text Editor](https://text-editor-bh.herokuapp.com/)
+
+## Media
+The following image is screen shot of the installed app:
+![main page](./client/src/images/main-page.png)
 
 ## Installation
 To install the necessary dependencies, run the following command:
