@@ -29,7 +29,7 @@ registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
 // Cache for static assets
 registerRoute(
-  ({ request }) =>  ['style', 'script', 'worker','image'].includes(request.destination),
+  ({ request }) =>  ['style', 'script', 'worker','image','manifest'].includes(request.destination),
   new CacheFirst({
     cacheName: 'asset-cache',
     plugins: [
