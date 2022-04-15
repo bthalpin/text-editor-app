@@ -25,6 +25,8 @@ export default class {
     // When the editor is ready, set the value to whatever is stored in indexeddb.
     // Fall back to localStorage if nothing is stored in indexeddb, and if neither is available, set the value to header.
     getDb().then((data) => {
+
+      // Turns the array of strings from indexedDb to a string to set to the editor value
       if (data) {
         data = data.map(line=>line.editor).join('\n')
       }
@@ -35,6 +37,7 @@ export default class {
 
     this.editor.on('change', () => {
       
+      // Pass in the value into local storage
       localStorage.setItem('content', this.editor.getValue());
     });
 
@@ -42,6 +45,7 @@ export default class {
     this.editor.on('blur', () => {
       console.log('The editor has lost focus');
       
+      // Pass in the text from local storage and the number of lines to be Put into indexedDb
       putDb(localStorage.getItem('content'),this.editor.lineCount());
     });
   }

@@ -3,9 +3,6 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
-// ODO: Add and configure workbox plugins for a service worker and manifest file.
-// ODO: Add CSS loaders and babel to webpack.
-
 module.exports = () => {
   return {
     mode: 'development',
@@ -20,12 +17,16 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         template: './index.html',
-        title: 'Text Editor'
+        title: 'Text Editor',
+        favicon:'./favicon.ico',
+        inject:true
       }),
       new InjectManifest({
         swSrc: './src-sw.js',
         swDest: 'src-sw.js',
       }),
+
+      // Generates manifest.json
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
@@ -38,25 +39,44 @@ module.exports = () => {
         publicPath: '/',
         id:'/',
         icons: [
+
+          // Saves images of varying sizes in manifest
           {
             src: path.resolve('src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons'),
           },
+
+          // // Saves favicon in manifest
+          // {
+          //   src: path.resolve('src/images/favicon.ico'),
+          //   sizes: " 16x16",
+          //   destination: path.join('assets', 'icons'),
+          //   type:'image/x-icon'
+          // },
         ],
       }),
     ],
 
     module: {
       rules: [
+
+        // CSS
         {
           test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
         },
+
+        // Images
+        {
+          test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
+          type: 'asset/resource',
+        },
+
+        // JS files using babel to convert from JS6
         {
           test: /\.m?js$/,
           exclude: /node_modules/,
-          // We use babel-loader in order to use ES6.
           use: {
             loader: 'babel-loader',
             options: {
