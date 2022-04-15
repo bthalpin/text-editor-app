@@ -33,7 +33,7 @@ registerRoute(
   new CacheFirst({
     cacheName: 'asset-cache',
     plugins: [
-      new StaleWhileRevalidate({
+      new CacheFirst({
         statuses: [0, 200],
       }),
       new ExpirationPlugin({
